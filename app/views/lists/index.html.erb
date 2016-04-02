@@ -15,7 +15,7 @@
     <% @lists.each do |list| %>
       <tr>
         <td><%= link_to list.id, list_path(list) %></td>
-        <td><%= list.name %></td>
+        <td><%= link_to list.name, list_path(list) %></td>
         <td><%=l list.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

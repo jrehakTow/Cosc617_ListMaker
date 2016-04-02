@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    #@list = List.where(id: choosenListID)
   end
 
   # GET /items/1/edit
@@ -25,6 +26,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    #write a method in model to get foreign key?
 
     respond_to do |format|
       if @item.save
