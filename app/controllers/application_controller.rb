@@ -4,7 +4,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #GET /layouts/application
-  def application
-    @lists = list.all
-  end
+
 end

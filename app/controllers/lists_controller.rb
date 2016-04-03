@@ -1,10 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
-  def application
-    @lists = list.all
-  end
-
   # GET /lists
   # GET /lists.json
   def index
@@ -14,7 +10,8 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    choosenListID = params[:id]
+    #setListID(params[:id])
+    #@listID = params[:id]
     @items = Item.where(list_id: params[:id])
   end
 

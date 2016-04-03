@@ -15,7 +15,11 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
-    #@list = List.where(id: choosenListID)
+    @listId = params[:list_id]
+  end
+
+  def getID
+    @listId
   end
 
   # GET /items/1/edit
@@ -25,8 +29,16 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    #@item = Item.new(item_params)
     #write a method in model to get foreign key?
+    #@items = Item.where(list_id: params[:id])
+
+    #@listId = params[:list_id]
+    #:list_id = params[:list_id]
+
+    @item = Item.new(item_params)
+
+    #@item = Item.new(:item, :name, :quantity, :list_id)
 
     respond_to do |format|
       if @item.save
@@ -71,6 +83,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
+      #params.require(:item).permit(:name, :quantity, :list_id)
       params.require(:item).permit(:name, :quantity, :list_id)
     end
 end

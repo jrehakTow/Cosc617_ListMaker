@@ -40,7 +40,7 @@
 </table>
 <p>
   <%= link_to t('.newItem', :default => t("helpers.links.AddNewItem")),
-            new_item_path,
+            new_item_path(:list_id => @list.id), #this should do it
             :class => 'btn btn-primary' %>
 </P>
 
