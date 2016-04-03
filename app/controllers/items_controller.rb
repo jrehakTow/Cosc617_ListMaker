@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @listId
   end
 
   # GET /items/new
@@ -24,6 +25,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @listId = params[:list_id]
   end
 
   # POST /items
@@ -55,8 +57,8 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+      if @item.update(params.require(:item).permit(:name, :quantity))
+        format.html { redirect_to List.find(@item.list_id), notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }
@@ -70,9 +72,10 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Item was successfully deleted.' } #not good for individual edit
       format.json { head :no_content }
     end
+
   end
 
   private
