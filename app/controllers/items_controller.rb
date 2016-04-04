@@ -19,17 +19,13 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @list = List.find(params[:list_id]) #this works
-
     @@listId = params[:list_id] #set parameter to variable
-
-    @item.list_id = params[:list_id] #remove?
-
+    @item.list_id = params[:list_id]
   end
 
   # GET /items/1/edit
   def edit
     @list = List.find(@item.list_id) #this!!
-
   end
 
   # POST /items
@@ -53,7 +49,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
-      if @item.update(params.require(:item).permit(:name, :quantity))
+      if @item.update(item_params)
         format.html { redirect_to List.find(@item.list_id), notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else

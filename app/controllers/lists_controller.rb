@@ -55,12 +55,10 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
-    #@item.where(list_id: params[:id]).destroy_all
-
-    @items = Item.where(list_id: params[:id])
-    @items.each do |item|
-      item.destroy
-    end
+    #@items = Item.where(list_id: params[:id]) #not needed because of :dependent :destory association
+    #@items.each do |item|
+     # item.destroy
+    #end
     @list.destroy
     respond_to do |format|
       format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
