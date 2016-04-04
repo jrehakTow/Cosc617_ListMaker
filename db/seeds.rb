@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 List.create([{ name: 'Groceries' }, { name: 'Home Improvement' }])
 
-Item.create([{name: 'apple', quantity: 2, list_id: 1}, {name: 'banana', quantity: 1, list_id: 1}, {name: 'hammer', quantity: 2, list_id: 2}])
+Item.create([{name: 'apple', quantity: 2, list_id: 1}, {name: 'banana', quantity: 1, list_id: 1},{name: 'pasta', quantity: 2, list_id: 1}, {name: 'hammer', quantity: 2, list_id: 2}])
