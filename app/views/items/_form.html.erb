@@ -30,7 +30,7 @@
     <%=f.error_span(:quantity) %>
   </div>
 
-    <%#if false #comment out field %>
+    <%if false #comment out field %>
     <div class="form-group">
     <%= f.label :list_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
@@ -38,13 +38,13 @@
     </div>
     <%=f.error_span(:list_id) %>
   </div>
-        <%#end%>
+        <%end%>
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                items_path, :class => 'btn btn-default' %>
+                  list_path(@item.list_id), :class => 'btn btn-default' %>
     </div>
   </div>
 

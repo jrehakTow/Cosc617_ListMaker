@@ -1,3 +1,3 @@
 class List < ActiveRecord::Base
-  #cullloooooo
+  has_many :items, dependent: :destroy
 end

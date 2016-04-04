@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Trunk" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "ListR" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -45,13 +45,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Trunk</a>
+        <a class="navbar-brand" href= <%= lists_path %>>ListR</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <%if false #comment out field %>
           <ul class="nav navbar-nav">
             <li><%= link_to "Link1", "/path1"  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
+          <%end%>
         </div>
       </div>
     </div>
@@ -76,7 +78,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2016</p>
+        <p>&copy; Rehak 2016</p>
       </footer>
 
     </div> <!-- /container -->

@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   # GET /items.json
+
   def index
     @items = Item.all
   end
@@ -13,19 +14,27 @@ class ItemsController < ApplicationController
     @listId
   end
 
+
   # GET /items/new
   def new
     @item = Item.new
-    @listId = params[:list_id]
-  end
+    @list = List.find(params[:list_id]) #this works
 
-  def getID
-    @listId
+    @@listId = params[:list_id] #set parameter to variable
+
+    @item.list_id = params[:list_id]
+
+    #@listId.setListId(params[:list_id])
+
+    #@item.list_id = @listId #this doesn't??
+
   end
 
   # GET /items/1/edit
   def edit
-    @listId = params[:list_id]
+    @list = List.find(@item.list_id) #this!!
+    #@listId = params[:list_id]
+    #@item
   end
 
   # POST /items
@@ -38,13 +47,23 @@ class ItemsController < ApplicationController
     #@listId = params[:list_id]
     #:list_id = params[:list_id]
 
+    #@list = List.find(@item.list_id)
+
+    #@item = @list.Item.new(item_params)
+
     @item = Item.new(item_params)
+
+    @item.list_id = @@listId #holy shit it worked
+
+    #@item.list_id = @listId
 
     #@item = Item.new(:item, :name, :quantity, :list_id)
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        #@item.list_id = @listId
+        #@item.save
+        format.html { redirect_to List.find(@item.list_id), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -82,11 +101,12 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
+      #@list = List.find(params[:list_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       #params.require(:item).permit(:name, :quantity, :list_id)
-      params.require(:item).permit(:name, :quantity, :list_id)
+      params.require(:item).permit(:name, :quantity)
     end
 end
