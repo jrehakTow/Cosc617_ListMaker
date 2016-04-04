@@ -40,8 +40,6 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        #@item.list_id = @listId
-        #@item.save
         format.html { redirect_to List.find(@item.list_id), notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
