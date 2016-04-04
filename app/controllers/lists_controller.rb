@@ -10,8 +10,6 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    #setListID(params[:id])
-    #@listID = params[:id]
     @items = Item.where(list_id: params[:id])
   end
 

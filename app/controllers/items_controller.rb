@@ -22,42 +22,21 @@ class ItemsController < ApplicationController
 
     @@listId = params[:list_id] #set parameter to variable
 
-    @item.list_id = params[:list_id]
-
-    #@listId.setListId(params[:list_id])
-
-    #@item.list_id = @listId #this doesn't??
+    @item.list_id = params[:list_id] #remove?
 
   end
 
   # GET /items/1/edit
   def edit
     @list = List.find(@item.list_id) #this!!
-    #@listId = params[:list_id]
-    #@item
+
   end
 
   # POST /items
   # POST /items.json
   def create
-    #@item = Item.new(item_params)
-    #write a method in model to get foreign key?
-    #@items = Item.where(list_id: params[:id])
-
-    #@listId = params[:list_id]
-    #:list_id = params[:list_id]
-
-    #@list = List.find(@item.list_id)
-
-    #@item = @list.Item.new(item_params)
-
     @item = Item.new(item_params)
-
-    @item.list_id = @@listId #holy shit it worked
-
-    #@item.list_id = @listId
-
-    #@item = Item.new(:item, :name, :quantity, :list_id)
+    @item.list_id = @@listId #get list id from copied parameter
 
     respond_to do |format|
       if @item.save
@@ -101,7 +80,6 @@ class ItemsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
-      #@list = List.find(params[:list_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

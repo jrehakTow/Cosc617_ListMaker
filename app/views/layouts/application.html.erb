@@ -27,7 +27,7 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag '/assets/images/ic_list_black_24dp_2x.png', :rel => 'assets_images', :type => 'image/png' %>
 
     <%= javascript_include_tag "application" %>
 
@@ -63,18 +63,8 @@
         <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
+          <p></p>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Recent Lists</li>
-
-              <li><% render "layouts/sidebar", collection: @lists%></li>
-              <li><%= link_to "Create New List", new_list_path  %></li>
-            </ul>
-
-          </div><!--/.well -->
-        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
